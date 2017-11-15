@@ -1,0 +1,127 @@
+<?php 
+ 
+$link = mysqli_connect("localhost", "thedaily_eyeinfo","l?FRn%Kp*M75","thedaily_dailyeye");
+ 
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+ 
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$email = mysqli_real_escape_string($link, isset($_POST['email']));
+$mobno = $_POST['mobno'];
+$topic = $_POST['topic'];
+$headline = $_POST['headline'];
+$containt = $_POST['containt'];
+$image = isset($_POST['image']);
+$docimg = isset($_POST['docimg']);
+$filetype = $_FILES["image"]["type"];
+$filetype1 = $_FILES["docimg"]["type"];
+mkdir("Img.$mobno");
+$target_path="Img.$mobno/";
+mkdir("Doc.$mobno");
+$target_docpath="Doc.$mobno/";
+$target_path = $target_path . basename( $_FILES['image']['name'] ); 
+$randString = md5(time()); //encode the timestamp - returns a 32 chars long string
+  $fileName = $_FILES["image"]["name"]; //the original file name
+  $splitName = explode(".", $fileName); //split the file name by the dot
+  $fileExt = end($splitName); //get the file extension
+  $newFileName  = strtolower($randString.'.time()'.$fileExt); //join file name and ext.
+
+if ( move_uploaded_file( $_FILES['image']['tmp_name'], $target_path)) {
+			
+			} else {
+				
+			}
+           $target_docpath = $target_docpath . basename( $_FILES['docimg']['name'] );
+
+if ( move_uploaded_file( $_FILES['docimg']['tmp_name'], $target_docpath ) ) {
+			 			} else {
+				
+			}
+// attempt insert query execution
+$sql = "INSERT INTO info (date,fname,lname,email,mobno,topic,headline,containt,image,docimg) VALUES (NOW(),'$fname','$lname','$email','$mobno','$topic','$headline','$containt','$filetype','$filetype1')";
+if(mysqli_query($link, $sql)){
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+ 
+// close connection
+mysqli_close($link);
+
+?>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css1/style.css">
+</head>
+
+<body>
+    <div class="title">
+        <h1 style="color:white; font-size:100px;">THANK YOU</h1>
+        <?php 
+   echo '<h1 style="color:white;" font-size:90px;>'; echo $fname  ; echo " "; echo $lname; echo '</h1> ';
+  
+  ?>
+        <h2 style="color:white; font-size:50px; font-family:Arial">You’re story will be uploaded only after approval by The Daily Eye Editorial Team. We will send you a mail with links
+            to you’re work when it is approved and uploaded on our social media platforms and The Daily Eye website. </h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a style="text-align: center; font-size:30px; background-color:green" target="_blank" href="http://thedailyeye.info/demo/"
+            class="white-mode">Go back to the Website</a>
+    </div>
+    <div class="more-pens">
+
+
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+    <script src="js1/index.js"></script>
+
+</body>
+
+</html>
+
+
+<?php 
+
+    $filename = 'myfile'; 
+    $path = $target_docpath;
+    $file = $target_docpath;
+
+    $mailto = 'ankush.sarage@gmail.com';
+    $subject = 'test mail';
+    $headers = "From: " . strip_tags($_POST['email']) . "\r\n";
+    $headers .= "Reply-To: ". strip_tags($_POST['email']) . "\r\n";
+    $headers .= "CC: susan@example.com\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+    $message = '<html><body>';
+        
+    $message .= '<table rules="all" style="border-color: #666;" cellpadding="10;"  border="1">';
+    $message .= "<tr style='background: #eee;'><td><strong>Name:</strong> </td><td>" . strip_tags($_POST['fname']) . "</td></tr>";
+    $message .= "<tr><td><strong>Email:</strong> </td><td>" . strip_tags($_POST['lname']) . "</td></tr>";
+    $message .= "<tr><td><strong>Type of Change:</strong> </td><td>" . strip_tags($_POST['email']) . "</td></tr>";
+    $message .= "<tr><td><strong>Urgency:</strong> </td><td>" . strip_tags($_POST['mobno']) . "</td></tr>";
+    $message .= "<tr><td><strong>URL To Change (main):</strong> </td><td>" . $_POST['topic'] . "</td></tr>";if (($addURLS) != '') 
+    $message .= "<tr><td><strong>URL To Change (additional):</strong> </td><td>" . strip_tags($addURLS) . "</td></tr>";
+    $message .= "<tr><td><strong>CURRENT Content:</strong> </td><td>" . $curText . "</td></tr>";
+    $message .= "<tr><td><strong>NEW Content:</strong> </td><td>" . htmlentities($_POST['newText']) . "</td></tr>";
+    $message .= "</table>";
+    $message .= "</body></html>";
+ 
+
+    //SEND Mail
+    if (mail($mailto, $subject, $message, $headers)) {
+        echo "mail send ... OK"; // or use booleans here
+    } else {
+        echo "mail send ... ERROR!";
+        print_r( error_get_last() );
+    }
+
+?>

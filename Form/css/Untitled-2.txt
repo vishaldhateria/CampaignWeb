@@ -1,0 +1,14 @@
+.container {
+    overflow:hidden;
+    list-style:none;
+}
+
+.container li {
+    float:left;
+    text-align:center;
+    margin:0.4em;
+}
+
+.container img {
+    display:block;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+<style>
+body{
+  background-color: #bfe9ff;
+}
+form{
+   background-color: #f5f2f0;
+   padding: 10px;
+ }
+</style>
+</head>
+<!-- Modal Trigger -->
+
+<body>
+  <div class="container">
+    <form action="welcome.php" method="post"  enctype="multipart/form-data">
+        <div class="row" style="    border: 1px solid #eee;
+        margin: 7px 0;
+        text-align: center;
+        line-height: 50px;
+        font-size: 28px;
+        background-color: tomato;
+        color: white;
+        padding: 0;">
+            <div class="col m12 s12"><span class="flow-text">Registration Form</span><br>
+            <h3>If I Am Born Campaign</h3></h1></div>
+          </div>
+      <div class="row">
+        <div class="input-field col m6 s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="first_name" type="text" class="validate"   name="fname" pattern="[a-zA-Z][a-zA-Z ]{2,}" style="text-transform: uppercase" required>
+          <label for="first_name" data-error="Please enter Correct Name" data-success="Correct"> First Name</label>
+        </div>
+        <div class="input-field col m6 s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="last_name" type="text" class="validate" name="lname" pattern="[a-zA-Z][a-zA-Z ]{2,}" style="text-transform: uppercase" required>
+          <label for="last_name" data-error="Please enter Correct Name" data-success="Correct">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col m6 s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email" type="email" class="validate" required>
+          <label for="email" data-error="Please enter Correct Email ID" name="email" data-success="Correct" required>Email</label>
+        </div>
+        <div class="input-field col m6 s12">
+          <i class="material-icons prefix">phone</i>
+          <input type="text" maxlength="10" class="validate" pattern="[0-9]{10}" name="mobno" title="Enter your mobile number" required>
+          <label for="first_name" data-error="Please enter Valid Mobile No." data-success="Correct">Mobile No</label>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col m6 s12">
+          <label><h5>Topics</h5></label>
+          <select class="browser-default" name="topic">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="Environment">Environment</option>
+            <option value="Pollution">Pollution</option>
+            <option value="Health">Health</option>  
+            <option value="Sustainable Development">Sustainable Development</option>
+            <option value="Human Rights">Human Rights</option>
+            <option value="Gender Equality">Gender Equality</option>
+            <option value="Female infanticide">Female infanticide</option>   
+            <option value="LGBTQ Community">LGBTQ Community</option>
+            <option value="Same sex marriages">Same sex marriages</option>
+            <option value="Education">Education</option>
+            <option value="Poverty">Poverty</option>  
+            <option value="Media’s Role In Society">Media's Role In Society</option>
+            <option value="Minority Groups">Minority Groups</option>
+            <option value="Gender Stereotypes">Gender Stereotypes</option>
+            <option value="Child Rights">Child Rights</option>
+            <option value="Hazardous Workplace ">Hazardous Workplace </option>
+            <option value="Any other Social topic">Any other Social topic</option>
+        </select>
+      </div>
+      </div>
+ <div class="row">
+        <div class="col m12 s12">
+          <h4 style="text-align: center;">Headline (Should Have a Prefix)</h4>
+        </div>
+      </div>
+<div class="row">
+        <div class="col m2 s12" >
+          <label style="text-transform:uppercase;color:black;"><h5> If Am Born</h5></label>
+        </div>
+        <div class="input-field col m10 s12">
+          <input type="text" name="headline" placeholder="eg.:  If I am born... poor,   If I am born... Polluted ">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col m12 s12">
+          <h5 style="text-align: center;">Upload Or Paste Your Article</h5>
+        </div>
+      </div>
+      <div class="row" >
+            <div class="file-field col m5 s12" style=" padding-top: 40px">
+                <div class="btn" >
+                  <span>Choose File</span>
+                  <input type="file" name="docimg">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" spellcheck="true">
+                </div>
+              </div>
+      
+        <div class=" col m1 s12">
+          <label style="text-transform:uppercase;color:black;">OR</label>
+        </div>
+        <div class="input-field col m6 s12">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="icon_prefix2" class="materialize-textarea" placeholder="Content box: Write Your Text here" name="containt"
+            data-length="500"></textarea>
+          <label for="icon_prefix2">Your Article</label>
+        </div>
+      </div>
+<hr>
+      <div class="row">
+        <div class="input-field col m3 s12">
+          <div id="dvPreview">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTVlMDQ3YmQzYjYgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNWUwNDdiZDNiNiI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44MDQ2ODc1IiB5PSIxMDUuMSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==">            </div>
+        </div>
+        </div>
+
+        <div class="file-field input-field col m3 s12">
+          <div class="btn">
+            <span>Choose Image</span>
+            <input id="fileupload" type="file" name="image" >
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" id="fileupload" type="text" >
+          </div>
+        </div>
+  <hr>
+          <div class="row">
+            <div class="col m3 s12">
+              <input type="checkbox" class="filled-in" name="accept" id="filled-in-box" checked="checked" />
+              <label for="filled-in-box">Accept terms and condition</label>
+            </div>
+
+         <br><br><br><br>
+          <div class="col m12 s12 btn " >
+            <span class="flow-text">
+            <input type="submit" name="submit" style="background-color:transparent;border:none;" value="SUBMIT"></span>
+          </div>
+          </div>
+    </form>
+
+
+    </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('select').material_select();
+      });
+    </script>
+    <script language="javascript" type="text/javascript">
+      $(function () {
+        $("#fileupload").change(function () {
+          $("#dvPreview").html("");
+          var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+          if (regex.test($(this).val().toLowerCase())) {
+            if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+              $("#dvPreview").show();
+              $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+            } else {
+              if (typeof (FileReader) != "undefined") {
+                $("#dvPreview").show();
+                $("#dvPreview").append("<img />");
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  $("#dvPreview img").attr("src", e.target.result);
+                  $("#dvPreview img").attr("style", "width:242px; height:200px;");
+
+                }
+                reader.readAsDataURL($(this)[0].files[0]);
+              } else {
+                alert("This browser does not support FileReader.");
+              }
+            }
+          } else {
+            alert("Please upload a valid image file.");
+          }
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+      });
+    </script>
+
+</body>
+
+</html>
