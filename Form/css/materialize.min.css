@@ -4320,7 +4320,7 @@ html {
     line-height: 1.5;
     font-family: "Roboto", sans-serif;
     font-weight: normal;
-    color: rgba(0, 0, 0, 0.87)
+    color: rgb(205, 166, 166);
 }
 
 @media only screen and (min-width: 0) {
@@ -5016,7 +5016,9 @@ small {
     transform-origin: 50% 0%;
     visibility: hidden
 }
-
+.btn:hover{
+    background-color:gray;
+}
 .btn,
 .btn-large,
 .btn-flat {
@@ -5069,7 +5071,6 @@ small {
 .btn-floating[disabled]:hover,
 .btn-large[disabled]:hover,
 .btn-flat[disabled]:hover {
-    background-color: #DFDFDF !important;
     color: #9F9F9F !important
 }
 
@@ -5100,7 +5101,7 @@ small {
 .btn,
 .btn-large {
     text-decoration: none;
-    color: #000;
+    color: #000000;
     background-color: #f4bb06;
     text-align: center;
     letter-spacing: .5px;
