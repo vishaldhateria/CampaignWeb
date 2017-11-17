@@ -12,8 +12,10 @@ $email = $_POST['email'];
 $mobno = $_POST['mobno'];
 $topic = $_POST['topic'];
 $headline = $_POST['headline'];
-$containt = $_POST['containt']; 
+$containt = $_POST['containt'];
+$videolink = $_POST['videolink'];
 $image = isset($_POST['image']);
+$writerintro = $_POST['writerintro'];
 $docimg = isset($_POST['docimg']);
 $filetype = $_FILES["image"]["type"];
 $filetype1 = $_FILES["docimg"]["type"];
@@ -40,7 +42,7 @@ if ( move_uploaded_file( $_FILES['docimg']['tmp_name'], $target_docpath ) ) {
 				
 			}
 // attempt insert query execution
-$sql = "INSERT INTO info (date,fname,lname,email,mobno,topic,headline,containt,image,docimg) VALUES (NOW(),'$fname','$lname','$email','$mobno','$topic','$headline','$containt','$filetype','$filetype1')";
+$sql = "INSERT INTO info (date,fname,lname,email,mobno,topic,headline,containt,videolink,image,writerintro,docimg) VALUES (NOW(),'$fname','$lname','$email','$mobno','$topic','$headline','$containt','$videolink','$filetype','$writerintro','$filetype1')";
 if(mysqli_query($link, $sql)){
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
