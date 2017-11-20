@@ -17,12 +17,16 @@ $videolink = $_POST['videolink'];
 $image = isset($_POST['image']);
 $writerintro = $_POST['writerintro'];
 $docimg = isset($_POST['docimg']);
+$writerimg =$_POST['writerimg'];
 $filetype = $_FILES["image"]["type"];
 $filetype1 = $_FILES["docimg"]["type"];
+$filetype2 = $_FILES["writerimg"]["type"];
 mkdir("Img.$mobno");
 $target_path="Img.$mobno/";
 mkdir("Doc.$mobno");
+mkdir("Doc.$fname");
 $target_docpath="Doc.$mobno/";
+$target_imgpath="Doc.$fname/";
 $target_path = $target_path . basename( $_FILES['image']['name'] ); 
 $randString = md5(time()); //encode the timestamp - returns a 32 chars long string
   $fileName = $_FILES["image"]["name"]; //the original file name
@@ -35,14 +39,21 @@ if ( move_uploaded_file( $_FILES['image']['tmp_name'], $target_path)) {
 			} else {
 				
 			}
-           $target_docpath = $target_docpath . basename( $_FILES['docimg']['name'] );
+$target_docpath = $target_docpath . basename( $_FILES['docimg']['name'] );
 
 if ( move_uploaded_file( $_FILES['docimg']['tmp_name'], $target_docpath ) ) {
 			 			} else {
 				
 			}
+
+$target_imgpath = $target_imgpath . basename( $_FILES['writerimg']['name'] );
+
+if ( move_uploaded_file( $_FILES['writerimg']['tmp_name'], $target_imgpath ) ) {
+                        } else {
+                
+            }
 // attempt insert query execution
-$sql = "INSERT INTO info (date,fname,lname,email,mobno,topic,headline,containt,videolink,image,writerintro,docimg) VALUES (NOW(),'$fname','$lname','$email','$mobno','$topic','$headline','$containt','$videolink','$filetype','$writerintro','$filetype1')";
+$sql = "INSERT INTO info (date,fname,lname,email,mobno,topic,headline,containt,videolink,image,writerintro,docimg,writerimg) VALUES (NOW(),'$fname','$lname','$email','$mobno','$topic','$headline','$containt','$videolink','$filetype','$writerintro','$filetype1','$filetype2')";
 if(mysqli_query($link, $sql)){
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
